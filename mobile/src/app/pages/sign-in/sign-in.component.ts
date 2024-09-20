@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,34 +11,28 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
+  authService = inject(AuthService)
 
-signInObj: any = {
-  username: "",
-  password: ""
-}
 
-router = inject(Router)
+  signIn(email: string, password: string) {
 
-signIn(){
-  if( this.signInObj.username === "Admin" && this.signInObj.password === "123"){
-      // this.router.navigateByUrl('/home')
-      console.log(` Username is ${this.signInObj.username} and password is ${this.signInObj.password}`);
+    if (!email) {
+      alert("Email is required")
+      return;
     }
-  else if (this.signInObj.username === "Murendeni" && this.signInObj.password === "234"){
-    // this.router.navigateByUrl('/home')
-    console.log(` Username is ${this.signInObj.username} and password is ${this.signInObj.password}`);
-  }
-  else if (this.signInObj.username === "User2" && this.signInObj.password === "345"){
-    // this.router.navigateByUrl('/home')
-    console.log(` Username is ${this.signInObj.username} and password is ${this.signInObj.password}`);
-  }
-  else if (this.signInObj.username && this.signInObj.password){
-    console.log(` Username is ${this.signInObj.username} and password is ${this.signInObj.password}`);
+
+    if (!password) {
+      alert("Password is required")
+      return;
+    }
+
+
+    this.authService.signIn({
+       email, password
+    })
+
 
   }
-  else{
-    alert("wrong details")
-  }
-}
+
 
 }

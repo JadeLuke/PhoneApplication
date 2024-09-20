@@ -1,20 +1,19 @@
-<section class="container">
-    <div class="login-container">
-        <div class="circle circle-one"></div>
-        <div class="form-container">
-            <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
-            <h1 class="opacity">LOGIN</h1>
-            <form>
-                <input type="text" placeholder="USERNAME" name="username" [(ngModel)]="signInObj.username" />
-                <input type="password" placeholder="PASSWORD" name="password" [(ngModel)]="signInObj.password" />
-                <button class="opacity" (click)="signIn()">SUBMIT</button>
-            </form>
-            <div class="register-forget opacity">
-                <a [routerLink]="[ '/register' ]" routerLinkActive="active">REGISTER</a>
-                <a href="">FORGOT PASSWORD</a>
-            </div>
+
+<div class="w-screen h-screen grid place-items-center">
+    <div class="-mt-16 w-80 bg-slate-200 text-center flex flex-col p-4 gap-4 rounded-lg">
+        <div class="text-4xl">Login</div>
+        <div class="">
+          <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" #email required />
         </div>
-        <div class="circle circle-two"></div>
+        <div class="">
+          <input type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Passowrd" #password required />
+        </div>
+
+          <div class="text-xs italic">Don't you have an account? <a routerLink="/register" class="font-bold">Register</a></div>
+        <div>
+            <button (click)="signIn(email.value, password.value)" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Submit</button>
+        </div>
     </div>
-    <div class="theme-btn-container"></div>
-</section>
+</div>
+
+

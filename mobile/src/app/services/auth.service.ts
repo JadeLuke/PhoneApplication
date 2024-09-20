@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  read() {
+    throw new Error('Method not implemented.');
+  }
   users: UserInterface[] = [];
   router = inject(Router)
 
@@ -14,9 +17,9 @@ export class AuthService {
 
   onRegister(userData: UserInterface) {
     const userEmail = userData.email;
-
-    for (let i = 0; i < this.users[1].length; i++) {
-      if (this.users[1].email === userEmail){
+    console.log(userData);
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].email === userEmail){
         alert(`${userEmail} is taken`);
         return
       }
@@ -29,9 +32,19 @@ export class AuthService {
       
   }
 
+ signIn(userData: UserInterface){
+   console.log(userData);
 
+  for (let i = 0; i < this.users.length; i++) {
 
-
-
+    if(this.users[i].email === userData.email && this.users[i].password === userData.password){
+      alert(`Welcome ${this.users[i].username}`)
+      this.router.navigateByUrl('/profile')
+    }
+    else{
+      alert(`wrong details`)
+    } 
+  }
+  }
 }
  
